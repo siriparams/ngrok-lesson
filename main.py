@@ -10,7 +10,8 @@ app = FastAPI()
 
 @app.get("/")
 def hello_world():
-    return {"message": "Hello World"}
+    return {"Hello World!"}
+    
 
 @app.post("/users/")
 def create_user(name: str, email: str, db: Session = Depends(get_db)):
