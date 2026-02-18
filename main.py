@@ -10,12 +10,12 @@ app = FastAPI()
 
 @app.get("/")
 def hello_world():
-    return {"Hello World!"}
-    
+    return {"message": "Hello World!"}
 
-@app.post("/users/")
-def create_user(name: str, email: str, db: Session = Depends(get_db)):
-    db_user = models.User(name=name, email=email)
+
+@app.post("/create_user/")
+def create_user(name: str, email: str, password: str, db: Session = Depends(get_db)):
+    db_user = models.User(name=name, email=email, password=password)
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
